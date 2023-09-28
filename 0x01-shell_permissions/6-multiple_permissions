@@ -1,2 +1,4 @@
-#!/bin/E45: 'readonly' option is set (add ! to override)                        1,7           All bash
-chmod +x,g+x,o+r hello
+#!/bin/bash
+chmod u+x,g+ hello
+
+
