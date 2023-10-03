@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(($BREATJ ** $LOVE))
+echo $(($POWER / $DIVIDE))
