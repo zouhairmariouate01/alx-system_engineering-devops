@@ -1,2 +1,2 @@
-#!/bin/bash 
-cat | tail -n +2 | cut -fi | sort | uniq -c I sort -nr I head -n11 I rev | cut -d" " -fi | re 
+#!/bin/bash
+tail -n +2  | cut -f 1 | sort -k 1 | uniq -c | sort -rnk 1 | head -n 11 | rev | cut -d ' ' -f 1 | rev 
