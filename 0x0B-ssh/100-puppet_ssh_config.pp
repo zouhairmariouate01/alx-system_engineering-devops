@@ -1,40 +1,12 @@
-# Setting up my client config file
+#configure ssh config
 
-include stdlib
-
-file { '/etc/ssh/ssh_config':
-  ensure  => file,
-  mode    => '0600',
-  owner   => 'root',
-  group   => 'root',
-  content => template('ssh/ssh_config.erb'),
+file_line{'Turn off passwd auth':
+path => '/etc/ssh/ssh_config',
+line => 'PasswordAuthentication no'
 }
 
-File { '/root/.ssh':
-  ensure => directory,
-  mode   => '0700',
-}
+file_line{'Declare identity file':
+path => '/etc/ssh/ssh_config',
+line => 'IdentityFile ~/.ssh/school'
 
-File { '/root/.ssh/config':
-  ensure  => file,
-  mode    => '0600',
-  owner   => 'root',
-  group   => 'root',
-  content => template('ssh/ssh_config.erb'),
-}
-
-File { '/root/.ssh/school':
-  ensure  => file,
-  mode    => '0600',
-  owner   => 'root',
-  group   => 'root',
-  source  => 'puppet:///modules/ssh/school',
-}
-
-ssh_config { 'root':
-  ensure => present,
-  user   => 'root',
-  host   => 'your_server_address',
-  identityfile => '/root/.ssh/school',
-  passwordauthentication => false,
 }
