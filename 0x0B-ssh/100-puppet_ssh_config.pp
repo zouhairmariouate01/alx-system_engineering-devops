@@ -1,4 +1,4 @@
-# ssh_config.pp
+# Setting up my client config file
 
 include stdlib
 
