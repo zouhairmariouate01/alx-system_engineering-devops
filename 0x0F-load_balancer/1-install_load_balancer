@@ -30,4 +30,3 @@ sudo haproxy -c -f /etc/haproxy/haproxy.cfg
 
 # Restart the Nginx service
 sudo service haproxy restart
-
