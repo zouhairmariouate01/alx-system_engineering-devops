@@ -1,0 +1,18 @@
+global
+    daemon
+    maxconn 256
+
+defaults
+    mode http
+    timeout connect 5000
+    timeout client  50000
+    timeout server  50000
+
+frontend https
+    bind *:443 ssl crt /etc/letsencrypt/live/www.zouahirmariouate.com/fullchain.pem
+    reqadd X-Forwarded-Proto:\ https
+    default_backend web_servers
+
+backend web_servers
+    balance roundrobin
+    server web1 127.0.0.1:80 check

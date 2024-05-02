@@ -1,0 +1,26 @@
+frontend http
+    bind *:80
+    mode http
+    default_backend web-servers
+
+backend web-servers
+    mode http
+    balance roundrobin
+    option httpchk HEAD / HTTP/1.0\r\nHost:localhost
+    server web-server-01 192.168.0.1:443 check
+
+frontend https
+    bind *:443 ssl crt /path/to/your/certificate.pem
+    mode http
+    default_backend web-servers
+
+backend web-servers
+    mode http
+    balance roundrobin
+    option httpchk HEAD / HTTP/1.0\r\nHost:localhost
+    server web-server-01 192.168.0.1:443 check
+
+frontend http-redirect
+    mode http
+    bind *:80
+    redirect location https://%[hdr(host)]%[path] code 301
