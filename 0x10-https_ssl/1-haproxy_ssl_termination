@@ -1,0 +1,10 @@
+frontend https_front
+        bind *:80
+        bind *:443 ssl crt /etc/haproxy/certs/www.zouhairmariouate.tech
+        redirect scheme https code 301 if !{ ssl_fc }
+        default_backend web_servers
+
+backend http_back
+        balance roundrobin
+        server 531212-web-01 54.236.54.188:80 check
+        server 531212-web-02 52.87.230.222:80 check
