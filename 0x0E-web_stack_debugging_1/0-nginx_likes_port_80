@@ -1,10 +1,4 @@
 #!/usr/bin/env bash
-# fix Ubuntu container's to listen on port 80
-
-new="80 default_server"
-old="8080 default_server"
-sed -i "s/$old/$new/" /etc/nginx/sites-enabled/default
-
+# debugging Nginx web server
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 service nginx restart
-
-echo "2"  # Add this line to produce the expected output
