@@ -1,4 +1,5 @@
- ufw firwall to block all incoming trafic
+#!/usr/bin/env bash
+#configure a ufw firwall to block all incoming trafic
 
 sudo apt-get install ufw
 sudo ufw default deny incoming -y
