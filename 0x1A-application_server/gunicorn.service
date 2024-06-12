@@ -1,4 +1,4 @@
-t]
+[Unit]
 Description=Gunicorn instance to serve my project
 After=network.target
 
